@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mensagem</title>
+<style>
+.erro{
+	background-color: tomato;
+	height: 50px;
+	display: flex;
+	font-weight:bold;
+	align-content: center;
+	border-radius: 10px;
+	border: 2px  solid black;
+}
+.sucesso{
+	background-color: lightgreen;
+	height: 50px;
+	display: flex;
+	font-weight:bold;
+	align-content: center;
+	border-radius: 10px;
+	border: 2px solid black;
+}
+</style>
+</head>
+<body>
+<div class="erro" th:if="${not #strings.isEmpty(mensagemErro)}">
+		<span th:text="${mensagemErro}"></span>
+	</div>
+	<div class="sucesso" th:if="${not #strings.isEmpty(mensagemSucesso)}">
+		<span th:text="${mensagemSucesso}"></span>
+	</div>
+</body>
+</html>
