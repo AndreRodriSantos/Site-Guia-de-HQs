@@ -5,7 +5,6 @@
 <title>Cadastro de Administrador</title>
 <style>
 * {
-	margin: auto;
 	text-align: center;
 	font-family: sans-serif;
 }
@@ -18,7 +17,9 @@ form {
 	width: 10%;
 	padding: 3%;
 	border-radius: 10px;
-	background-color: gray;
+	background-color: #3e3f40;
+	margin: auto;
+	margin-top: 20px;
 }
 
 h1 {
@@ -28,67 +29,83 @@ h1 {
 }
 
 input {
-	background-color: lightgray;
+	background-color: gray;
 	border-radius: 20px;
 }
 
 .button {
-  position: relative;
-  background-color: darkgray;
-  border: none;
-  font-size: 28px;
-  color: #FFFFFF;
-  width: 100px;
-  text-align: center;
-  transition-duration: 0.4s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 10px;
+	position: relative;
+	background-color: gray;
+	border: none;
+	font-size: 28px;
+	color: #FFFFFF;
+	width: 100px;
+	text-align: center;
+	transition-duration: 0.4s;
+	text-decoration: none;
+	overflow: hidden;
+	cursor: pointer;
+	border-radius: 10px;
+	margin: auto;
 }
-body{
-	background-image: url("../background.jpg"); 
+
+body {
+	background-image: url("../background.jpg");
 	display: flex;
-	height:100%;
-	flex-direction:column;
+	height: 100%;
+	flex-direction: column;
 	align-content: center;
+	margin:auto;
 }
-label{
+
+label {
 	color: white;
 }
-.erro{
+
+.erro {
 	background-color: tomato;
 	height: 50px;
 	display: flex;
-	font-weight:bold;
+	font-weight: bold;
 	align-content: center;
 	border-radius: 10px;
-	border: 2px  solid black;
+	border: 2px solid black;
+	text-align: center;
 }
-.sucesso{
+
+.sucesso {
 	background-color: lightgreen;
 	height: 50px;
 	display: flex;
-	font-weight:bold;
+	font-weight: bold;
 	align-content: center;
 	border-radius: 10px;
 	border: 2px solid black;
 }
+
+header {
+	background-color: #3e3f40;
+}
 </style>
 </head>
+<header>
+	<h1>Formulario de Administrador</h1>
+</header>
 <body>
-	<h1>Formulario de Clientes</h1>
+
 	<form action="salvarAdmin" method="post">
-		<label>Nome</label> <input type="text" name="nome" required="required"> <br>
-		<label>Email</label> <input type="text" name="email" required="required"> <br>
-		<label>Senha</label> <input type="Password" name="senha" required="required"> <br>
+	<input type="hidden" name="id" th:value="${admin?.id}">
+		<label>Nome</label>
+		<input type="text" name="nome" required="required" th:value="${admin?.nome}">
+		<br> 
+		<label>Email</label>
+		<input type="text" name="email" required="required" th:value="${admin?.email}">
+		<br> 
+		<label>Senha</label> 
+		<input type="Password" name="senha" required="required"> <br>
 		<button type="submit" class="button">Salvar</button>
 	</form>
 	<br>
-	
-	<div th:replace = "fragments/msg">
-	
-	</div>
-	
+	<div th:replace="fragments/msg"></div>
 </body>
 </html>

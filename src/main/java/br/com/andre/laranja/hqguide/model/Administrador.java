@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.andre.laranja.hqguide.util.HashUtil;
 import lombok.Data;
 
 //para gerar o get e o set
@@ -20,4 +21,10 @@ public class Administrador {
 	@Column(unique = true)
 	private String email;
 	private String senha;
+	
+	//metodo para setar a senha apliacando o hash
+	public void setSenha(String senha) {
+		//aplica o hash e "seta" a senha no objeto
+		this.senha = HashUtil.hash256(senha);
+	}
 }
