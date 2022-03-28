@@ -3,109 +3,81 @@
 <head>
 <meta charset="utf-8">
 <title>Cadastro de Administrador</title>
-<style>
-* {
-	text-align: center;
-	font-family: sans-serif;
-}
-
-form {
-	display: flex;
-	flex-direction: column;
-	border: black;
-	box-shadow: 2px 2px 15px black;
-	width: 10%;
-	padding: 3%;
-	border-radius: 10px;
-	background-color: #3e3f40;
-	margin: auto;
-	margin-top: 20px;
-}
-
-h1 {
-	margin-bottom: 20px;
-	color: white;
-	text-shadow: 5px 2px 5px black;
-}
-
-input {
-	background-color: gray;
-	border-radius: 20px;
-}
-
-.button {
-	position: relative;
-	background-color: gray;
-	border: none;
-	font-size: 28px;
-	color: #FFFFFF;
-	width: 100px;
-	text-align: center;
-	transition-duration: 0.4s;
-	text-decoration: none;
-	overflow: hidden;
-	cursor: pointer;
-	border-radius: 10px;
-	margin: auto;
-}
-
-body {
-	background-image: url("../background.jpg");
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	align-content: center;
-	margin:auto;
-}
-
-label {
-	color: white;
-}
-
-.erro {
-	background-color: tomato;
-	height: 50px;
-	display: flex;
-	font-weight: bold;
-	align-content: center;
-	border-radius: 10px;
-	border: 2px solid black;
-	text-align: center;
-}
-
-.sucesso {
-	background-color: lightgreen;
-	height: 50px;
-	display: flex;
-	font-weight: bold;
-	align-content: center;
-	border-radius: 10px;
-	border: 2px solid black;
-}
-
-header {
-	background-color: #3e3f40;
-}
-</style>
+<link rel="stylesheet" href="../CSS/FormAdminStyle.css">
 </head>
 <header>
+	 <div class="container">
+		<nav class="nav">
+			<div class="home">
+			<a href="#">HOME</a>
+			</div>
+			
+			<div class="lista">
+			<a th:href="@{/listarAdmin/1}">LISTA</a>
+			</div>
+			
+			<div class="cliente">
+				<a href="#">CLIENTE</a>
+			</div>
+			
+			<div class="sair">
+				<a href="#">SAIR</a>
+			</div>
+		</nav>
+		 <input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden" onselect="">
+        <label for="checkbox4">
+            <div class="hamburger hamburger4">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+                <span class="bar bar4"></span>
+                <span class="bar bar5"></span>
+            </div>
+          </label>
+	 </div>
 	<h1>Formulario de Administrador</h1>
+	<div></div>
 </header>
+<img src="../IMG/thanos.png" class="thanos">
 <body>
-
-	<form action="salvarAdmin" method="post">
+	<form action="salvarAdmin" method="post" id="formAdmin">
+	<fieldset form="formAdmin">
+	<legend>Administrador</legend>
 	<input type="hidden" name="id" th:value="${admin?.id}">
+		<div class="wrapper">
 		<label>Nome</label>
-		<input type="text" name="nome" required="required" th:value="${admin?.nome}">
-		<br> 
+		<input type="text" name="nome" required="required" th:value="${admin?.nome}" autocomplete="off">
+		 <span class="underline"></span>
+		 </div>
+		 
+		<br>
+		
+		<div class="wrapper">
 		<label>Email</label>
-		<input type="text" name="email" required="required" th:value="${admin?.email}">
+		<input type="text" name="email" required="required" th:value="${admin?.email}" autocomplete="off">
+		<span class="underline"></span>
+		</div>
+		
 		<br> 
+		
+		<div class="wrapper">
 		<label>Senha</label> 
-		<input type="Password" name="senha" required="required"> <br>
-		<button type="submit" class="button">Salvar</button>
+		<input type="Password" name="senha" required="required">
+		<span class="underline"></span>
+		</div>
+		
+		 <br>
+		
+		<div class="botao-div">
+		<button type="submit" id="botao" class="confetti-button">Salvar</button>
+		</div>
+		</fieldset>
 	</form>
+	
+	
 	<br>
 	<div th:replace="fragments/msg"></div>
 </body>
+
+<script src="../JS/FormAdminJS.js"></script>
 </html>
