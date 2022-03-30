@@ -26,7 +26,7 @@ input {
 	color: gray;
 }
 body {
-	background-image: url("../IMG/background_form_admin.jpg");
+	background-image: url("../IMG/background.jpg");
 	display: flex;
 	height: 100%;
 	flex-direction: column;

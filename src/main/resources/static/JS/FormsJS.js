@@ -22,6 +22,7 @@ for (var i = 0; i < classname.length; i++) {
 const menu = document.querySelector(".checkbox4")
 const nav = document.querySelector("nav")
 let openmenu = false;
+const burguer = document.querySelector(".checkbox")
 
 menu.addEventListener('click', ()=>{
 	if(!openmenu){
@@ -35,6 +36,9 @@ menu.addEventListener('click', ()=>{
 	}
 	
 })
+function uncheck(){
+	document.getElementById("checkbox4").checked = false
+}
 
 /*const menu = document.querySelector(".checkbox4")
 const nav = document.querySelector(".nav")

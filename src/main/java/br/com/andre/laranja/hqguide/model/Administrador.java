@@ -22,38 +22,14 @@ public class Administrador {
 	private String email;
 	private String senha;
 	
-	//metodo para setar a senha apliacando o hash
+	//metodo para setar a senha aplicando o hash
 	public void setSenha(String senha) {
 		//aplica o hash e "seta" a senha no objeto
 		this.senha = HashUtil.hash256(senha);
 	}
-
-	public Long getId() {
-		return id;
+	// metodo para setar a senha sem fazer hash
+	public void setSenhaComHash(String hash) {
+		//"seta" o hash na senha
+		this.senha = hash;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-	
 }

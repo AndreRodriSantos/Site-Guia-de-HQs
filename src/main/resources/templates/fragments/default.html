@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>HTML Padrão</title>
+</head>
+<body>
+
+	<header th:fragment="cabecalhoAdmin">
+		<div class="container">
+			<nav class="nav">
+				<div class="home">
+					<a href="#">HOME</a>
+				</div>
+
+				<div class="lista">
+					<a th:href="@{/listarAdmin/1}" onclick="uncheck()">LISTA</a>
+				</div>
+
+				<div class="cliente">
+					<a href="#">CLIENTE</a>
+				</div>
+				
+				<div class="categorias">
+					<a th:href="@{/formCategorias}" onclick="uncheck()">ADMINISTRADOR</a>
+				</div>
+
+				<div class="sair">
+					<a href="#">SAIR</a>
+				</div>
+			</nav>
+			<input type="checkbox" id="checkbox4"
+				class="checkbox4 visuallyHidden" onselect=""> <label
+				for="checkbox4">
+				<div class="hamburger hamburger4">
+					<span class="bar bar1"></span> <span class="bar bar2"></span> <span
+						class="bar bar3"></span> <span class="bar bar4"></span> <span
+						class="bar bar5"></span>
+				</div>
+			</label>
+		</div>
+		<h1>Formulario de Administrador</h1>
+		<div></div>
+	</header>
+	
+	<header th:fragment="cabecalhoTipos">
+		<div class="container">
+			<nav class="nav">
+				<div class="home">
+					<a href="#">HOME</a>
+				</div>
+
+				<div class="lista">
+					<a th:href="@{/listarTipos/1}" onclick="uncheck()">LISTA</a>
+				</div>
+
+				<div class="cliente">
+					<a href="#">CLIENTE</a>
+				</div>
+				
+				<div class="categorias">
+					<a th:href="@{/formAdmin}" onclick="uncheck()">ADMINISTRADOR</a>
+				</div>
+
+				<div class="sair">
+					<a href="#">SAIR</a>
+				</div>
+			</nav>
+			<input type="checkbox" id="checkbox4"
+				class="checkbox4 visuallyHidden" onselect=""> <label
+				for="checkbox4">
+				<div class="hamburger hamburger4">
+					<span class="bar bar1"></span> <span class="bar bar2"></span> <span
+						class="bar bar3"></span> <span class="bar bar4"></span> <span
+						class="bar bar5"></span>
+				</div>
+			</label>
+		</div>
+		<h1>Formulario de Administrador</h1>
+		<div></div>
+	</header>
+
+	<footer th:fragment="rodape"> 
+		HQsGuide &copy 2022 
+	</footer>
+</body>
+</html>

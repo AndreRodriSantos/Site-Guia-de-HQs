@@ -5,39 +5,8 @@
 <title>Cadastro de Administrador</title>
 <link rel="stylesheet" href="../CSS/FormAdminStyle.css">
 </head>
-<header>
-	 <div class="container">
-		<nav class="nav">
-			<div class="home">
-			<a href="#">HOME</a>
-			</div>
-			
-			<div class="lista">
-			<a th:href="@{/listarAdmin/1}">LISTA</a>
-			</div>
-			
-			<div class="cliente">
-				<a href="#">CLIENTE</a>
-			</div>
-			
-			<div class="sair">
-				<a href="#">SAIR</a>
-			</div>
-		</nav>
-		 <input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden" onselect="">
-        <label for="checkbox4">
-            <div class="hamburger hamburger4">
-                <span class="bar bar1"></span>
-                <span class="bar bar2"></span>
-                <span class="bar bar3"></span>
-                <span class="bar bar4"></span>
-                <span class="bar bar5"></span>
-            </div>
-          </label>
-	 </div>
-	<h1>Formulario de Administrador</h1>
-	<div></div>
-</header>
+<header th:replace="fragments/default :: cabecalhoAdmin"></header>
+
 <img src="../IMG/thanos.png" class="thanos">
 <body>
 	<form action="salvarAdmin" method="post" id="formAdmin">
@@ -62,7 +31,7 @@
 		
 		<div class="wrapper">
 		<label>Senha</label> 
-		<input type="Password" name="senha" required="required">
+		<input type="Password" name="senha">
 		<span class="underline"></span>
 		</div>
 		
@@ -74,10 +43,12 @@
 		</fieldset>
 	</form>
 	
-	
 	<br>
 	<div th:replace="fragments/msg"></div>
 </body>
-
-<script src="../JS/FormAdminJS.js"></script>
+	
+	
+	<footer th:replace="fragments/default :: rodape"></footer>
+	
+<script src="../JS/FormsJS.js"></script>
 </html>
