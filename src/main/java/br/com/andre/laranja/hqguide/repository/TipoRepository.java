@@ -9,10 +9,13 @@ import org.springframework.stereotype.Repository;
 
 import br.com.andre.laranja.hqguide.model.TipoGibi;
 
-	@Repository
-	public interface TipoRepository extends PagingAndSortingRepository<TipoGibi, Long>{
-		
-		@Query("select t from tipo_gibi t where t.nome Like %:t% OR t.descricao Like %:t% OR t.palavraChave Like %:t%")
-		public List<TipoGibi> procurarTipo(@Param("t") String parametro);
-	}
+@Repository
+public interface TipoRepository extends PagingAndSortingRepository<TipoGibi, Long> {
+	@Query("select t from TipoGibi t where t.palavraChave like %:pc%")
+	public List<TipoGibi> procurarPelaPalavra(@Param("pc") String palavra);
 
+	@Query("select t from TipoGibi t where t.descricao like %:pc%")
+	public List<TipoGibi> procurarPelaDescricao(@Param("pc") String palavra);
+
+	public List<TipoGibi> findByNomeLike(String palavra);
+}

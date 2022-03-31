@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.hibernate.sql.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,17 +24,18 @@ import br.com.andre.laranja.hqguide.repository.TipoRepository;
 
 @Controller
 public class TipoController {
-	
+
 	@Autowired
 	private TipoRepository repository;
-	
+
 	@RequestMapping("formCategorias")
 	public String form_adm(Model model) {
 		return "formTipos";
 	}
+
 	@RequestMapping(value = "salvarTipo", method = RequestMethod.POST)
 	public String salvarTipo(@Valid TipoGibi tipo, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			attr.addFlashAttribute("mensagemErro", "Verifique os Campos...");
 			return "redirect:formCategorias";
 		}
@@ -46,7 +48,7 @@ public class TipoController {
 		}
 		return "redirect:formCategorias";
 	}
-	
+
 	@RequestMapping("listarTipos/{page}")
 	public String listar(Model model, @PathVariable("page") int page) {
 		// criar um pageable com 6 elementos de forma ascendente ordenado pelo nome
@@ -67,7 +69,7 @@ public class TipoController {
 		model.addAttribute("numPaginas", pageNumbers);
 		return "listaTipos";
 	}
-	
+
 	@RequestMapping("alterarTipo")
 	public String alterarTipo(Model model, Long id) {
 		TipoGibi tipo = repository.findById(id).get();
@@ -80,5 +82,23 @@ public class TipoController {
 		repository.deleteById(id);
 		return "redirect:listarTipos/1";
 	}
-	
+
+	@RequestMapping("/procurarCategoria")
+	public String procurarTipos(String palavraChave, Model model, String select) {
+		switch (select) {
+		case "nome":
+			model.addAttribute("tipos", repository.findByNomeLike("%"+palavraChave+"%"));
+			break;
+		case "palavraChave":
+			model.addAttribute("tipos", repository.procurarPelaPalavra(palavraChave));
+			break;
+		case "descricao":
+			model.addAttribute("tipos", repository.procurarPelaDescricao(palavraChave));
+			break;
+		default:
+			break;
+		}
+		return "listaTipos";
 	}
+
+}

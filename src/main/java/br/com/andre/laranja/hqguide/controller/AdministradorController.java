@@ -47,7 +47,7 @@ public class AdministradorController {
 				// extrai a parte do email antes do @
 				String parte = admin.getEmail().substring(0, admin.getEmail().indexOf("@"));
 
-				// defina a senha dio admin
+				// defina a senha do admin
 				admin.setSenha(parte);
 			} else {
 				//busca a senha atual

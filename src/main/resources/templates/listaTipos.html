@@ -3,9 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Lista de Categorias</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
     <style>
     html{
     	width: 100%;
@@ -35,6 +33,33 @@
     td{
     	box-sizing: border-box;
     }
+    .erro {
+	background-color: tomato;
+	height: 50px;
+	font-weight: bold;
+	border-radius: 10px;
+	border: 2px solid black;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.sucesso {
+	background-color: lightgreen;
+	height: 50px;
+	font-weight: bold;
+	border-radius: 10px;
+	border: 2px solid black;
+	text-align: center;
+	display: flex;
+	align-content:flex-end;
+	align-items: center;
+	box-sizing: border-box;
+}
+.sucesso span{
+	padding-left: 25%;
+	padding-right: 25%;
+}
     </style>
 </head>
 <body >
@@ -70,5 +95,17 @@
     	<a th:href="${paginaAtual <  totalPaginas ? paginaAtual + 1 : '#'}"><i class="material-icons">chevron_right</i></a>
     </li>
   </ul>
+
+ <form action="/procurarCategoria">
+		<label>Buscar Categorias:</label>
+		<input type="search" name="palavraChave" placeholder="Digite uma Palavra">
+		<select name="select">
+			<option value="nome">Nome</option>
+			<option value="palavraChave">Palavra Chave</option>
+			<option value="descricao">Descrição</option>
+		</select>
+		<button type="submit">Buscar</button>
+	</form>
+	<div th:replace="fragments/msg"></div>
 </body>
 </html>
