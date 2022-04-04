@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Cadastro de Administrador</title>
+<link rel="stylesheet" href="../CSS/FormAdminStyle.css">
+</head>
+
+<header>
+	<div class="container">
+		<nav class="nav">
+			<div class="home">
+				<a href="#">HOME</a>
+			</div>
+
+			<div class="lista">
+				<a th:href="@{/listarAdmin/1}" onclick="uncheck()">LISTA</a>
+			</div>
+
+			<div class="cliente">
+				<a href="#">CLIENTE</a>
+			</div>
+
+			<div class="sair">
+				<a href="#">SAIR</a>
+			</div>
+		</nav>
+		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
+			onselect=""> <label for="checkbox4">
+			<div class="hamburger hamburger4">
+				<span class="bar bar1"></span> <span class="bar bar2"></span> <span
+					class="bar bar3"></span> <span class="bar bar4"></span> <span
+					class="bar bar5"></span>
+			</div>
+		</label>
+	</div>
+	<h1>Formulario de Administrador</h1>
+
+	<div class="switch-div">
+		<h6>Cadastro / Login</h6>
+		<label class="switch"> 
+			<input type="checkbox" id="switch-id">
+			<span class="slider round"></span>
+		</label>
+	</div>
+</header>
+
+<img src="../IMG/thanos.png" id="personagem">
+<body class="background1">
+	<form action="salvarAdmin" method="post" class="formCadastro">
+		<fieldset form="formAdmin">
+			<legend>Cadastro</legend>
+			<input type="hidden" name="id" th:value="${admin?.id}">
+			<div class="wrapper">
+				<label>Nome</label> <input type="text" name="nome"
+					required="required" th:value="${admin?.nome}" autocomplete="off">
+				<span class="underline-blue"></span>
+			</div>
+
+			<br>
+
+			<div class="wrapper">
+				<label>Email</label> <input type="text" name="email"
+					required="required" th:value="${admin?.email}" autocomplete="off">
+				<span class="underline-blue"></span>
+			</div>
+
+			<br>
+
+			<div class="wrapper">
+				<label>Senha</label> <input type="Password" name="senha"> <span
+					class="underline-blue"></span>
+			</div>
+
+			<br>
+
+			<div class="botao-div">
+				<button type="submit" id="botao" class="confetti-button-blue">Salvar</button>
+			</div>
+		</fieldset>
+	</form>
+	
+	<form  class="formLoginOff">
+		<fieldset form="formLogin">
+			<legend>Login</legend>
+			<input type="hidden" name="id" th:value="${admin?.id}">
+			<div class="wrapper">
+				<label>Nome</label> <input type="text" name="nome"
+					required="required" autocomplete="off">
+				<span class="underline-red"></span>
+			</div>
+
+			<br>
+
+			<br>
+
+			<div class="wrapper">
+				<label>Senha</label> <input type="Password" name="senha"> <span
+					class="underline-red"></span>
+			</div>
+
+			<br>
+
+			<div class="botao-div">
+				<button type="submit" id="botao" class="confetti-button-red">Entrar</button>
+			</div>
+		</fieldset>
+	</form>
+
+	<br>
+	<div th:replace="fragments/msg"></div>
+</body>
+
+
+<footer th:replace="fragments/default :: rodape"></footer>
+
+<div id="circle" class="Off">
+</div>
+<script src="../JS/FormsJS.js"></script>
+<script src="../JS/NavBarJS.js"></script>
+</html>

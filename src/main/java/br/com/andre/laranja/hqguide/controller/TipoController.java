@@ -30,7 +30,7 @@ public class TipoController {
 
 	@RequestMapping("formCategorias")
 	public String form_adm(Model model) {
-		return "formTipos";
+		return "Tipos/formTipos";
 	}
 
 	@RequestMapping(value = "salvarTipo", method = RequestMethod.POST)
@@ -67,7 +67,7 @@ public class TipoController {
 		model.addAttribute("paginaAtual", page);
 		model.addAttribute("totalPaginas", totalpages);
 		model.addAttribute("numPaginas", pageNumbers);
-		return "listaTipos";
+		return "Tipos/listaTipos";
 	}
 
 	@RequestMapping("alterarTipo")
@@ -98,7 +98,7 @@ public class TipoController {
 		default:
 			break;
 		}
-		return "listaTipos";
+		return "Tipos/listaTipos";
 	}
 
 }

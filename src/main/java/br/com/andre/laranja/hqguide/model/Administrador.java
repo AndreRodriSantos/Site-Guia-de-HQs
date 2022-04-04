@@ -32,4 +32,5 @@ public class Administrador {
 		//"seta" o hash na senha
 		this.senha = hash;
 	}
+	
 }

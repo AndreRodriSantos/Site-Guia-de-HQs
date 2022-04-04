@@ -1,15 +1,30 @@
-
+html{
+	overflow:hidden;
+}
 * {
 	font-family: sans-serif;
 }
 
-form {
+form{
 	border: black;
 	width: 300px;
 	border-radius: 10px;
 	margin: auto;
-	margin-top: 18%;
-	position: relative;
+	top: 55%;
+	position: absolute;
+	transition: all 0.2s linear;
+}
+.formCadastro{
+	left:41%;
+}
+.formCadastroOff{
+	left:-350px;
+}
+.formLoginOff{
+	left:-350px;
+}
+.formLogin{
+	left:41%;
 }
 
 h1 {
@@ -26,7 +41,6 @@ input {
 	color: gray;
 }
 body {
-	background-image: url("../IMG/background_form_admin.jpg");
 	display: flex;
 	height: 100%;
 	flex-direction: column;
@@ -34,7 +48,12 @@ body {
 	margin:auto;
 	background-size: cover;
 	background-repeat: repeat;
-	
+}
+.background1{
+	background-image: url("../IMG/background1.jpg");
+}
+.background2{
+	background-image: url("../IMG/background2.jpg");
 }
 
 label {
@@ -102,12 +121,27 @@ input:focus {
     outline: none; 
   }
 
-input:focus+.underline {
+input:focus+.underline-blue {
+  transform: scale(1);
+}
+input:focus+.underline-red {
   transform: scale(1);
 }
 
-.underline {
+.underline-blue {
   background-color: dodgerblue;
+  height: 3px;
+  position:absolute;
+  margin-top: 35px;
+  display:float;
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  width: 274px;
+}
+.underline-red {
+  background-color: #C21700;
   height: 3px;
   position:absolute;
   margin-top: 35px;
@@ -125,7 +159,7 @@ input:focus+.underline {
     margin-bottom:10px;
 }
 
-.confetti-button {
+.confetti-button-blue {
     font-family: 'Helvetica', 'Arial', sans-serif;
     display: inline-block;
     font-size: 20px;
@@ -141,9 +175,9 @@ input:focus+.underline {
     transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
     box-shadow: 0 2px 25px rgba(0, 30, 130, 0.5);
   }
-  .confetti-button:focus { outline: 0; }
+  .confetti-button-blue:focus { outline: 0; }
   
-  .confetti-button:before, .confetti-button:after {
+  .confetti-button-blue:before, .confetti-button-blue:after {
     position: absolute;
     content: '';
     display: block;
@@ -154,7 +188,7 @@ input:focus+.underline {
     transition: all ease-in-out 0.5s;
     background-repeat: no-repeat;
   }
-  .confetti-button:before {
+  .confetti-button-blue:before {
     display: none;
     top: -75%;
     background-image: radial-gradient(circle, dodgerblue 20%, transparent 20%),
@@ -169,7 +203,7 @@ input:focus+.underline {
     background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
      10% 10%, 18% 18%;
   }
-   .confetti-button:after {
+   .confetti-button-blue:after {
     display: none;
     bottom: -75%;
     background-image: radial-gradient(circle,  dodgerblue 20%, transparent 20%),
@@ -188,15 +222,89 @@ input:focus+.underline {
     box-shadow: 0 5px 40px rgba(0, 30, 130, 0.2);
   }
   
-  .confetti-button.animate:before {
+  .confetti-button-blue.animate:before {
     display: block;
     animation: topBubbles ease-in-out 0.75s forwards;
   }
   
-  .confetti-button.animate:after {
+  .confetti-button-blue.animate:after {
     display: block;
     animation: bottomBubbles ease-in-out 0.75s forwards;
   }
+  
+  .confetti-button-red {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    display: inline-block;
+    font-size: 20px;
+    padding: 1em 2em;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #C21700;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(130, 30, 0, 0.5);
+  }
+  .confetti-button-red:focus { outline: 0; }
+  
+  .confetti-button-red:before, .confetti-button-red:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  }
+  .confetti-button-red:before {
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, #C21700 20%, transparent 20%),
+     radial-gradient(circle, transparent 20%,  #C21700 20%, transparent 30%),
+     radial-gradient(circle,  #C21700 20%, transparent 20%), 
+     radial-gradient(circle,  #C21700 20%, transparent 20%), 
+     radial-gradient(circle, transparent 10%, #C21700 15%, transparent 20%), 
+     radial-gradient(circle,  #C21700 20%, transparent 20%), 
+     radial-gradient(circle,  #C21700 20%, transparent 20%),
+     radial-gradient(circle,  #C21700 20%, transparent 20%),
+     radial-gradient(circle,  #C21700 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+     10% 10%, 18% 18%;
+  }
+   .confetti-button-red:after {
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle,  #C21700 20%, transparent 20%),
+     radial-gradient(circle,  #C21700 20%, transparent 20%), 
+     radial-gradient(circle, transparent 10%,  #C21700 15%, transparent 20%), 
+     radial-gradient(circle,  #C21700 20%, transparent 20%),
+     radial-gradient(circle,  #C21700 20%, transparent 20%),
+     radial-gradient(circle,  #C21700 20%, transparent 20%),
+     radial-gradient(circle,  #C21700 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  }
+  
+  .confetti-button-red:active {
+    transform: scale(0.9);
+    background-color: #9d1400;
+    box-shadow: 0 5px 40px rgba(0, 30, 130, 0.2);
+  }
+  
+  .confetti-button-red.animate:before {
+    display: block;
+    animation: topBubbles ease-in-out 0.75s forwards;
+  }
+  
+  .confetti-button-red.animate:after {
+    display: block;
+    animation: bottomBubbles ease-in-out 0.75s forwards;
+  }
+  
    @keyframes
   topBubbles {  0% {
    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 
@@ -372,13 +480,13 @@ a{
 .home{
 	margin-top: 200px;
 }
-.thanos{
+#personagem{
 	height: 350px;
-	margin-top: 50px;
+	margin: auto;
 	width: 400px;
 	position: absolute;
 	left: 40%;
-	top: 50px
+	top:15%;
 }
 footer{
 		background-color: #1A1A1A;
@@ -394,3 +502,92 @@ footer{
 		position:fixed;
 		height: 70px;
 }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 35px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2196F3;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #C21700;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+h6{
+	color:white;
+	margin:10px;
+}
+.switch-div{
+	text-align: center;
+	margin-right: 20px;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+}
+#circle{
+	 transition: 3s ease-in;
+	 height: 2200px;
+	 width: 2800px;
+}
+.Off{
+	background: black;
+	left:2000px;
+	top:-500px;
+	position: absolute;
+	border-radius: 50%;
+}
+.On{
+	background: black;
+	left:-3000px;
+	top:-500px;
+	position: absolute;
+	border-radius: 50%;
+}
+

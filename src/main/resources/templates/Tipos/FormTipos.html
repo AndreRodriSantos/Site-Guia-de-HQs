@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Formulario de Categorias</title>
+<link rel="stylesheet" href="../CSS/FormTiposStyle.css">
+</head>
+
+<header>
+	<div class="container">
+		<nav class="nav">
+			<div class="home">
+				<a href="#">HOME</a>
+			</div>
+
+			<div class="lista">
+				<a th:href="@{/listarTipos/1}" onclick="uncheck()">LISTA</a>
+			</div>
+
+			<div class="cliente">
+				<a href="#">CLIENTE</a>
+			</div>
+
+			<div class="sair">
+				<a href="#">SAIR</a>
+			</div>
+		</nav>
+		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
+			onselect=""> <label for="checkbox4">
+			<div class="hamburger hamburger4">
+				<span class="bar bar1"></span> <span class="bar bar2"></span> <span
+					class="bar bar3"></span> <span class="bar bar4"></span> <span
+					class="bar bar5"></span>
+			</div>
+		</label>
+	</div>
+	<h1>Formulario de Categorias</h1>
+	<div></div>
+</header>
+
+<body>
+	<form action="salvarTipo" method="post" id="formTipos">
+		<fieldset form="formTipos">
+			<legend>Categorias</legend>
+			<input type="hidden" name="id" th:value="${tipo?.id}">
+			<div class="wrapper">
+				<label>Nome</label> <input type="text" name="nome"
+					required="required" th:value="${tipo?.nome}" autocomplete="off">
+				<span class="underline"></span>
+			</div>
+
+			<br>
+
+			<div class="wrapper">
+				<label>Descricao</label>
+				<textarea rows="4" cols="30" name="descricao"
+					th:text="${tipo?.descricao}" required="required"></textarea>
+				<span class="underline"></span>
+			</div>
+
+			<br>
+
+			<div class="wrapper">
+				<label>Palavras Chave</label> <input type="text" name="palavraChave"
+					th:value="${tipo?.palavraChave}" autocomplete="off"> <span class="underline"></span>
+			</div>
+
+			<br>
+
+			<div class="botao-div">
+				<button type="submit" id="botao" class="confetti-button">Salvar</button>
+			</div>
+		</fieldset>
+	</form>
+	<br>
+	<div th:replace="fragments/msg"></div>
+</body>
+<footer th:replace="fragments/default :: rodape"></footer>
+
+<script src="../JS/FormsJS.js"></script>
+<script src="../JS/NavBarJS.js"></script>
+</html>

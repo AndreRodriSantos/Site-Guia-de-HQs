@@ -3,49 +3,43 @@
 <head>
 <meta charset="utf-8">
 <title>Lista Administradores</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<style>
-html {
-	width: 100%;
-	height: 100%;
-}
-
-body {
-	height: 100%;
-}
-
-table {
-	background-color: #1A1A1A;
-	color: gray;
-	font-weight: bold;
-}
-
-.pagination {
-	position: absolute;
-	top: 90%;
-	left: 50%;
-}
-
-.head {
-	color: white;
-	background-color: #1A1A1A;
-}
-
-tr {
-	border-bottom: 2px solid white;
-	background-color: #2c2c2c;
-}
-
-td {
-	box-sizing: border-box;
-}
-</style>
+<link rel="stylesheet" href="../CSS/ListaAdminStyle.css">
 </head>
+<div class="principal">
+<header>
+	<div class="container">
+		<nav class="nav">
+			<div class="home">
+				<a href="#">HOME</a>
+			</div>
+
+			<div class="lista">
+				<a th:href="@{/formAdmin}" onclick="uncheck()">CADASTRO</a>
+			</div>
+
+			<div class="cliente">
+				<a href="#">CLIENTE</a>
+			</div>
+
+			<div class="sair">
+				<a href="#">SAIR</a>
+			</div>
+		</nav>
+		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
+			onselect=""> <label for="checkbox4">
+			<div class="hamburger hamburger4">
+				<span class="bar bar1"></span> <span class="bar bar2"></span> <span
+					class="bar bar3"></span> <span class="bar bar4"></span> <span
+					class="bar bar5"></span>
+			</div>
+		</label>
+	</div>
+	<h1>Lista de Administradores</h1>
+
+	<div>
+	</div>
+</header>
+
 <body>
 	<table>
 		<tr class="head">
@@ -63,11 +57,12 @@ td {
 			<td><a th:href="@{/excluirAdmin(id=${adm.id})}">Excluir</a></td>
 		</tr>
 	</table>
+	</div>
 
 	<ul class="pagination">
 		<li th:class="${paginaAtual == 1 ? 'disabled' : ''}"><a
 			th:href="${paginaAtual > 1 ? paginaAtual - 1 : '#'}"><i
-				class="material-icons">chevron_left</i></a></li>
+				class="material-icons"><</i></a></li>
 
 		<li th:each="p:${numPaginas}"
 			th:class="${paginaAtual == p? 'active blue' : 'waves-effect'}">
@@ -76,11 +71,10 @@ td {
 
 		<li th:class="${paginaAtual == totalPaginas ? 'disabled' : ''}">
 			<a th:href="${paginaAtual <  totalPaginas ? paginaAtual + 1 : '#'}"><i
-				class="material-icons">chevron_right</i></a>
+				class="material-icons">></i></a>
 		</li>
 	</ul>
 
 </body>
-
-
+<script src="../JS/NavBarJS.js"></script>
 </html>

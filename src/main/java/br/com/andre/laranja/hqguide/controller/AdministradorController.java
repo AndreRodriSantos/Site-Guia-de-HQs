@@ -29,7 +29,7 @@ public class AdministradorController {
 
 	@RequestMapping("formAdmin")
 	public String form_adm(Model model) {
-		return "formAdministrador";
+		return "Admin/formAdministrador";
 	}
 
 	@RequestMapping(value = "salvarAdmin", method = RequestMethod.POST)
@@ -85,7 +85,7 @@ public class AdministradorController {
 		model.addAttribute("paginaAtual", page);
 		model.addAttribute("totalPaginas", totalpages);
 		model.addAttribute("numPaginas", pageNumbers);
-		return "listaAdmin";
+		return "Admin/listaAdmin";
 	}
 
 	@RequestMapping("alterarAdmin")
