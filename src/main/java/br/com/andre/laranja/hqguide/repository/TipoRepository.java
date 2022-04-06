@@ -18,4 +18,6 @@ public interface TipoRepository extends PagingAndSortingRepository<TipoGibi, Lon
 	public List<TipoGibi> procurarPelaDescricao(@Param("pc") String palavra);
 
 	public List<TipoGibi> findByNomeLike(String palavra);
+	
+	public List<TipoGibi> findAllByOrderByNomeAsc();
 }

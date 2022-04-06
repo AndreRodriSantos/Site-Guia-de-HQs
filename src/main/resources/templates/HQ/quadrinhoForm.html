@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Formulario de Quadrinhos</title>
+<link rel="stylesheet" href="../CSS/FormHQStyle.css">
+</head>
+
+<header>
+	<div class="container">
+		<nav class="nav">
+			<div class="home">
+				<a href="#">HOME</a>
+			</div>
+
+			<div class="lista">
+				<a th:href="@{/listarTipos/1}" onclick="uncheck()">LISTA</a>
+			</div>
+
+			<div class="cliente">
+				<a href="#">CLIENTE</a>
+			</div>
+
+			<div class="sair">
+				<a href="#">SAIR</a>
+			</div>
+		</nav>
+		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
+			onselect=""> <label for="checkbox4">
+			<div class="hamburger hamburger4">
+				<span class="bar bar1"></span> <span class="bar bar2"></span> <span
+					class="bar bar3"></span> <span class="bar bar4"></span> <span
+					class="bar bar5"></span>
+			</div>
+		</label>
+	</div>
+	<h1>Formulario de Quadrinho</h1>
+	<div></div>
+</header>
+
+<body>
+	<form action="salvarQuadrinho" method="post" id="formQuadrinho">
+		<fieldset form="formQuadrinho">
+			<legend>Quadrinhos</legend>
+			<input type="hidden" name="id" th:value="${tipo?.id}">
+			<div class="wrapper">
+				<label>Nome</label> <input type="text" name="nome"
+					required="required" th:value="${tipo?.nome}" autocomplete="off">
+				<span class="underline"></span>
+			</div>
+
+			<br>
+
+			<div class="wrapper">
+				<label>Descricao</label>
+				<textarea rows="4" cols="30" name="descricao"
+					th:text="${tipo?.descricao}" required="required"></textarea>
+				<span class="underline"></span>
+			</div>
+
+			<br>
+
+			<div>
+				<label>Tipo / Genero</label> 
+				<select>
+						<option th:each="t : ${tipos}" value="${t}" th:text="${t.nome}" name="tipo">
+				</select>
+			</div>
+
+			<div class="wrapper">
+				<label>Classificação Indicativa</label> <input type="text"
+					name="classIndicativa" th:value="${tipo?.palavraChave}"
+					autocomplete="off"> <span class="underline"></span>
+			</div>
+
+			<div class="wrapper">
+				<label>Editora</label> <input type="text" name="editora"
+					th:value="${tipo?.palavraChave}" autocomplete="off"> <span
+					class="underline"></span>
+			</div>
+
+			<div class="wrapper">
+				<label>Autor</label> <input type="text" name="autor"
+					th:value="${tipo?.palavraChave}" autocomplete="off"> <span
+					class="underline"></span>
+			</div>
+
+			<div class="wrapper">
+				<label>Quantidade de Paginas</label> <input type="number"
+					name="qtdPaginas" th:value="${tipo?.palavraChave}"
+					autocomplete="off"> <span class="underline"></span>
+			</div>
+
+			<br>
+
+			<div class="botao-div">
+				<button type="submit" id="botao" class="confetti-button">Salvar</button>
+			</div>
+		</fieldset>
+	</form>
+	<br>
+	<div th:replace="fragments/msg"></div>
+	<footer th:replace="fragments/default :: rodape"></footer>
+</body>
+
+
+<script src="../JS/FormsJS.js"></script>
+<script src="../JS/NavBarJS.js"></script>
+</html>

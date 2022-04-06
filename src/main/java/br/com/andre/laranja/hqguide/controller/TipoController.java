@@ -85,6 +85,7 @@ public class TipoController {
 
 	@RequestMapping("/procurarCategoria")
 	public String procurarTipos(String palavraChave, Model model, String select) {
+		
 		switch (select) {
 		case "nome":
 			model.addAttribute("tipos", repository.findByNomeLike("%"+palavraChave+"%"));
