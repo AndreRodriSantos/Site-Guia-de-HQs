@@ -47,7 +47,8 @@ body {
 	align-content: center;
 	margin:auto;
 	background-size: cover;
-	background-repeat: repeat;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 }
 .background1{
 	background-image: url("../IMG/background1.jpg");
@@ -216,7 +217,7 @@ input:focus+.underline-red {
     background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
   }
   
-  .confetti-button:active {
+  .confetti-button-blue:active {
     transform: scale(0.9);
     background-color: #036bfc;
     box-shadow: 0 5px 40px rgba(0, 30, 130, 0.2);
@@ -486,7 +487,7 @@ a{
 	width: 400px;
 	position: absolute;
 	left: 40%;
-	top:15%;
+	top:20%;
 }
 footer{
 		background-color: #1A1A1A;
@@ -582,6 +583,7 @@ h6{
 	top:-500px;
 	position: absolute;
 	border-radius: 50%;
+	visibility: hidden;
 }
 .On{
 	background: black;
@@ -589,5 +591,6 @@ h6{
 	top:-500px;
 	position: absolute;
 	border-radius: 50%;
+	visibility: visible;
 }
 

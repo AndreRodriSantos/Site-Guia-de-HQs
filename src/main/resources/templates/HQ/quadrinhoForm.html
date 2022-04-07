@@ -39,7 +39,7 @@
 </header>
 
 <body>
-	<form action="salvarQuadrinho" method="post" id="formQuadrinho">
+	<form action="salvarQuadrinho" method="post" id="formQuadrinho" enctype="multipart/form-data" accept-charset="utf-8">
 		<fieldset form="formQuadrinho">
 			<legend>Quadrinhos</legend>
 			<input type="hidden" name="id" th:value="${tipo?.id}">
@@ -60,17 +60,22 @@
 
 			<br>
 
-			<div>
-				<label>Tipo / Genero</label> 
-				<select>
-						<option th:each="t : ${tipos}" value="${t}" th:text="${t.nome}" name="tipo">
-				</select>
+			<div class="wrapper">
+				<label>Tipo / Genero</label> <select class="browser-default"
+					name="tipo">
+					<option th:each="t: ${tipos}" th:value="${t.id}" th:text="${t.nome}"></option>
+				</select> <span class="underline"></span>
 			</div>
 
 			<div class="wrapper">
 				<label>Classificação Indicativa</label> <input type="text"
 					name="classIndicativa" th:value="${tipo?.palavraChave}"
 					autocomplete="off"> <span class="underline"></span>
+			</div>
+
+			<div class="wrapper">
+				<label>Foto</label> <input type="file" name="fileFotos" multiple="multiple" accept="image/*"> 
+				<span class="underline"></span>
 			</div>
 
 			<div class="wrapper">
@@ -94,7 +99,7 @@
 			<br>
 
 			<div class="botao-div">
-				<button type="submit" id="botao" class="confetti-button">Salvar</button>
+				<button type="submit" id="botao" class="confetti-button-blue">Salvar</button>
 			</div>
 		</fieldset>
 	</form>

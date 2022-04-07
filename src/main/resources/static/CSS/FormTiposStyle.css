@@ -125,7 +125,7 @@ input:focus+.underline {
     margin-bottom:10px;
 }
 
-.confetti-button {
+.confetti-button-blue {
     font-family: 'Helvetica', 'Arial', sans-serif;
     display: inline-block;
     font-size: 20px;
@@ -141,9 +141,9 @@ input:focus+.underline {
     transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
     box-shadow: 0 2px 25px rgba(0, 30, 130, 0.5);
   }
-  .confetti-button:focus { outline: 0; }
+  .confetti-button-blue:focus { outline: 0; }
   
-  .confetti-button:before, .confetti-button:after {
+  .confetti-button-blue:before, .confetti-button-blue:after {
     position: absolute;
     content: '';
     display: block;
@@ -154,7 +154,7 @@ input:focus+.underline {
     transition: all ease-in-out 0.5s;
     background-repeat: no-repeat;
   }
-  .confetti-button:before {
+  .confetti-button-blue:before {
     display: none;
     top: -75%;
     background-image: radial-gradient(circle, dodgerblue 20%, transparent 20%),
@@ -169,7 +169,7 @@ input:focus+.underline {
     background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
      10% 10%, 18% 18%;
   }
-   .confetti-button:after {
+   .confetti-button-blue:after {
     display: none;
     bottom: -75%;
     background-image: radial-gradient(circle,  dodgerblue 20%, transparent 20%),
@@ -182,18 +182,18 @@ input:focus+.underline {
     background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
   }
   
-  .confetti-button:active {
+  .confetti-button-blue:active {
     transform: scale(0.9);
     background-color: #036bfc;
     box-shadow: 0 5px 40px rgba(0, 30, 130, 0.2);
   }
   
-  .confetti-button.animate:before {
+  .confetti-button-blue.animate:before {
     display: block;
     animation: topBubbles ease-in-out 0.75s forwards;
   }
   
-  .confetti-button.animate:after {
+  .confetti-button-blue.animate:after {
     display: block;
     animation: bottomBubbles ease-in-out 0.75s forwards;
   }
