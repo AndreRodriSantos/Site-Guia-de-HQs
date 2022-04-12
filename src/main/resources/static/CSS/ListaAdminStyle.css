@@ -1,7 +1,12 @@
+*{
+	box-sizing: border-box;
+}
+
 html{
     	width: 100%;
     	height: 100%;
     	font-family: sans-serif;
+    	overflow: hidden;
     }
     body {
 	display: flex;
@@ -9,13 +14,12 @@ html{
 	flex-direction: column;
 	align-content: flex-end;
 	justify-content:space-between;
-	margin:auto;
+	margin: 0;
 	background-size: cover;
 	background-repeat: no-repeat;
 	text-align: center;
 	background-image: url("../IMG/background1.jpg");
 }
-    
     h1 {
 	margin-bottom: 20px;
 	color: white;
@@ -28,13 +32,13 @@ html{
     box-shadow: 0px 4px 6px black;
 }
     table{
-    	background-color: #1A1A1A;
     	color: gray;
     	font-weight: bold;
     	text-align:center;
     	margin-top:10px;
     	border-spacing: 0px;
     	border-collapse: collapse;
+    	transition: all 0.2s ease-in-out, transform 0.2s ease-in-out 0.2s;
     }
     .pagination{
     	position: relative;
@@ -59,14 +63,11 @@ html{
     	color: white;
     	background-color: #1A1A1A;
     }
-    tr{
-    	background-color:#2c2c2c;
-    }
     td{
     	box-sizing: border-box;
+    	background-color:#2c2c2c;
     	height: 60px;
     	border-bottom: 3px solid white;
-    	
     }
      .visuallyHidden {
     position: absolute; 
@@ -224,4 +225,13 @@ a{
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+}
+.dust {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top:-9px
+}
+.manopla{
+	height: 50px;
 }

@@ -1,15 +1,19 @@
-
+html{
+	height: 100%;
+}
 * {
 	font-family: sans-serif;
 }
 
 form {
+	max-width:400px;
 	border: black;
-	width: 300px;
+	width: 400px;
 	border-radius: 10px;
 	margin: auto;
-	margin-top: 10%;
 	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 h1 {
@@ -25,16 +29,43 @@ input {
 	width: 90%;
 	color: gray;
 }
+.ft input {
+	border: 2px solid white;
+  
+}
+
+input[type=file]{
+	height: 20px;
+	margin-top:10px;
+}
+.ft::-webkit-file-upload-button {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 15px;
+    position:absolute;
+    bottom:118px;
+ 	left:345px;
+    height:30px;
+   	width:30px;
+    -webkit-appearance: none;
+    color:transparent;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 25px rgba(0, 30, 130, 0.5);
+  	background: url("../IMG/upload.png") no-repeat left;
+  	background-position:center;
+  	background-color: dodgerblue;
+}
 body {
-	background-image: url("../IMG/background.jpg");
+	background-image: url("../IMG/background_dc.jpg");
 	display: flex;
 	height: 100%;
 	flex-direction: column;
 	align-content: center;
 	margin:auto;
 	background-size: cover;
-	background-repeat: repeat;
-	
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 }
 
 label {
@@ -52,6 +83,10 @@ label {
 	display: flex;
 	align-items: center;
 }
+.erro span{
+	width: 100%;
+	text-align: center;
+}
 
 .sucesso {
 	background-color: lightgreen;
@@ -59,15 +94,13 @@ label {
 	font-weight: bold;
 	border-radius: 10px;
 	border: 2px solid black;
-	text-align: center;
 	display: flex;
-	align-content:flex-end;
 	align-items: center;
 	box-sizing: border-box;
 }
 .sucesso span{
-	padding-left: 35%;
-	padding-right: 35%;
+	width: 100%;
+	text-align: center;
 }
 
 header {
@@ -111,14 +144,15 @@ input:focus+.underline {
   background-color: dodgerblue;
   height: 3px;
   position:absolute;
-  margin-top: 45px;
+  margin-top: 44px;
   display:float;
   -webkit-transform: scale(0, 1);
   transform: scale(0, 1);
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  width: 274px;
+  width: 365px;
 }
+
 
 .botao-div{
     transform: translate(-0%, 0%);
@@ -189,12 +223,12 @@ input:focus+.underline {
     box-shadow: 0 5px 40px rgba(0, 30, 130, 0.2);
   }
   
-  .confetti-button.animate:before {
+  .confetti-button-blue.animate:before {
     display: block;
     animation: topBubbles ease-in-out 0.75s forwards;
   }
   
-  .confetti-button.animate:after {
+  .confetti-button-blue.animate:after {
     display: block;
     animation: bottomBubbles ease-in-out 0.75s forwards;
   }
@@ -326,43 +360,31 @@ input:focus+.underline {
     background-color: transparent; 
 }
 
-.nav{
+nav{
 	background-color:#2c2c2c;
 	position:absolute; 
 	width: 200px;
 	height: 100%;
 	top: 0;
-	left:-200px;
 	transition: 0.4s ease-in;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	box-shadow: 4px 0 6px black;
+}
+
+.nav{
+	left:-200px;
 }
 
 .show{
-	background-color:#2c2c2c;
-	position:absolute; 
-	width: 200px;
-	height: 100%;
-	top: 0;
-	left: 0px;
-	transition: 0.4s ease-in;
-	box-shadow: 4px 0 6px black;
-}
-nav{
-	display: flex;
-	align-items: center;
-	align-content: space-between;
-	flex-direction: column;
-	text-align: center;
+	left: 0px;	
 }
 nav div{
-	margin-top: 100px;
-	border-radius: 10px;
-	width: 70%;
-	height: 30px;
-	box-sizing: border-box;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	
+	justify-content:space-around;
 }
 a{
 	color: white;
@@ -371,31 +393,36 @@ a{
 	text-decoration: none;
 }
 .home{
-	margin-top: 200px;
+	margin-top: 50px;
+}
+.sair{
+	margin-bottom: 50px;
 }
 footer{
 		background-color: #1A1A1A;
 		color: white;
 		font-weight: bold;
-		top: 900px;
-		width:100%;
 		display:flex;
+		margin-top:20px;
 		align-content:center;
 		padding-left:45%;
 		padding-right:45%;
 		align-items:center;
-		position:fixed;
 		height: 70px;
+		position: relative;
 }
-select {
-	background-color: transparent;
-	border:none;
-	border-bottom: 2px solid white;
+select{
 	width: 90%;
-	color: gray;
+	height: 30px;
+	color:white;
+	background-color: transparent;
+	border: 2px solid white;
 	outline: none;
+	margin-top: 5px;
 }
-option {
-	color: white;
-	background-color: #494949;
+option{
+	background-color: rgb(51, 51, 51);
+}
+textarea {
+	max-width: 90%;
 }

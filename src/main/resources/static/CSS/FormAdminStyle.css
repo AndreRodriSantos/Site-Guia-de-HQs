@@ -1,32 +1,33 @@
 html{
 	overflow:hidden;
+	height: 100%;
 }
 * {
 	font-family: sans-serif;
 }
-
+.principal{
+	height:100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 form{
 	border: black;
 	width: 300px;
 	border-radius: 10px;
 	margin: auto;
-	top: 55%;
-	position: absolute;
+	top:320px;
 	transition: all 0.2s linear;
-}
-.formCadastro{
-	left:41%;
+	position: absolute;
 }
 .formCadastroOff{
 	left:-350px;
 }
 .formLoginOff{
 	left:-350px;
+	
 }
-.formLogin{
-	left:41%;
-}
-
 h1 {
 	margin-bottom: 20px;
 	color: white;
@@ -43,7 +44,7 @@ input {
 body {
 	display: flex;
 	height: 100%;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	align-content: center;
 	margin:auto;
 	background-size: cover;
@@ -71,6 +72,10 @@ label {
 	display: flex;
 	align-items: center;
 }
+.erro span{
+	width: 100%;
+	text-align: center;
+}
 
 .sucesso {
 	background-color: lightgreen;
@@ -78,17 +83,14 @@ label {
 	font-weight: bold;
 	border-radius: 10px;
 	border: 2px solid black;
-	text-align: center;
 	display: flex;
-	align-content:flex-end;
 	align-items: center;
 	box-sizing: border-box;
 }
 .sucesso span{
-	padding-left: 25%;
-	padding-right: 25%;
+	width: 100%;
+	text-align: center;
 }
-
 header {
 	background-color: #1A1A1A;
 	display: flex;
@@ -433,44 +435,31 @@ input:focus+.underline-red {
     bottom: 13.5px;
     background-color: transparent; 
 }
-
-.nav{
+nav{
 	background-color:#2c2c2c;
 	position:absolute; 
 	width: 200px;
 	height: 100%;
 	top: 0;
-	left:-200px;
 	transition: 0.4s ease-in;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	box-shadow: 4px 0 6px black;
+}
+
+.nav{
+	left:-200px;
 }
 
 .show{
-	background-color:#2c2c2c;
-	position:absolute; 
-	width: 200px;
-	height: 100%;
-	top: 0;
-	left: 0px;
-	transition: 0.4s ease-in;
-	box-shadow: 4px 0 6px black;
-}
-nav{
-	display: flex;
-	align-items: center;
-	align-content: space-between;
-	flex-direction: column;
-	text-align: center;
+	left: 0px;	
 }
 nav div{
-	margin-top: 100px;
-	border-radius: 10px;
-	width: 70%;
-	height: 30px;
-	box-sizing: border-box;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	
+	justify-content:space-around;
 }
 a{
 	color: white;
@@ -478,30 +467,32 @@ a{
 	padding: 5px;
 	text-decoration: none;
 }
+
 .home{
-	margin-top: 200px;
+	margin-top: 50px;
+}
+.sair{
+	margin-bottom: 50px;
 }
 #personagem{
 	height: 350px;
-	margin: auto;
 	width: 400px;
-	position: absolute;
-	left: 40%;
-	top:20%;
+	position: relative;
+	margin-top: 20px;
 }
 footer{
 		background-color: #1A1A1A;
 		color: white;
 		font-weight: bold;
-		top: 900px;
+		margin: auto;
 		width:100%;
 		display:flex;
 		align-content:center;
 		padding-left:45%;
 		padding-right:45%;
 		align-items:center;
-		position:fixed;
 		height: 70px;
+		position: relative;
 }
 
 .switch {
@@ -593,4 +584,3 @@ h6{
 	border-radius: 50%;
 	visibility: visible;
 }
-

@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<title>Lista Administradores</title>
-<link rel="stylesheet" href="../CSS/ListaAdminStyle.css">
+	<meta charset="utf-8">
+	<title>Lista Administradores</title>
+	<link rel="stylesheet" href="../CSS/ListaAdminStyle.css">
+	<script src="../JS/html2canvas.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.1.8/chance.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="../JS/jquery-ui-1.9.2.custom.min.js"></script>
 </head>
 <div class="principal">
 <header>
@@ -49,12 +53,12 @@
 			<th>Alterar</th>
 			<th>Excluir</th>
 		</tr>
-		<tr th:each="adm:${admins}">
-			<td th:text="${adm.id}" />
-			<td th:text="${adm.nome}" />
-			<td th:text="${adm.email}" />
-			<td><a th:href="@{/alterarAdmin(id=${adm.id})}">Alterar</a></td>
-			<td><a th:href="@{/excluirAdmin(id=${adm.id})}">Excluir</a></td>
+		<tr th:each="adm:${admins}" class="admin">
+				<td th:text="${adm.id}" />
+				<td th:text="${adm.nome}" />
+				<td th:text="${adm.email}" />
+				<td><a th:href="@{/alterarAdmin(id=${adm.id})}" >Alterar</a></td>
+				<td ><a th:href="@{/excluirAdmin(id=${adm.id})}" class="excluir-btn"><img src="../IMG/thanos_idle.png" class="manopla" ></a></td>
 		</tr>
 	</table>
 	</div>
@@ -77,4 +81,4 @@
 
 </body>
 <script src="../JS/NavBarJS.js"></script>
-</html>
+<script src="../JS/Estalo.js"></script></html>

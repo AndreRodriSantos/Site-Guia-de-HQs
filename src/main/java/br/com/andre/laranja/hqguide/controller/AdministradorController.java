@@ -3,6 +3,8 @@ package br.com.andre.laranja.hqguide.controller;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,8 +98,14 @@ public class AdministradorController {
 	}
 
 	@RequestMapping("excluirAdmin")
-	public String excluirAdmin(Long id) {
-		repository.deleteById(id);
-		return "redirect:listarAdmin/1";
+	public String excluirAdmin(Long id){
+		try {
+			Thread.sleep(6500);
+			repository.deleteById(id);
+			return "redirect:listarAdmin/1";
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			return "redirect:listarAdmin/1";
+		}
 	}
 }

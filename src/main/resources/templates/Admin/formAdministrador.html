@@ -4,47 +4,12 @@
 <meta charset="utf-8">
 <title>Cadastro de Administrador</title>
 <link rel="stylesheet" href="../CSS/FormAdminStyle.css">
+<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 </head>
 
-<header>
-	<div class="container">
-		<nav class="nav">
-			<div class="home">
-				<a href="#">HOME</a>
-			</div>
+<footer th:replace="fragments/default :: rodape"></footer>
 
-			<div class="lista">
-				<a th:href="@{/listarAdmin/1}" onclick="uncheck()">LISTA</a>
-			</div>
-
-			<div class="cliente">
-				<a href="#">CLIENTE</a>
-			</div>
-
-			<div class="sair">
-				<a href="#">SAIR</a>
-			</div>
-		</nav>
-		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
-			onselect=""> <label for="checkbox4">
-			<div class="hamburger hamburger4">
-				<span class="bar bar1"></span> <span class="bar bar2"></span> <span
-					class="bar bar3"></span> <span class="bar bar4"></span> <span
-					class="bar bar5"></span>
-			</div>
-		</label>
-	</div>
-	<h1>Formulario de Administrador</h1>
-
-	<div class="switch-div">
-		<h6>Cadastro / Login</h6>
-		<label class="switch"> 
-			<input type="checkbox" id="switch-id">
-			<span class="slider round"></span>
-		</label>
-	</div>
-</header>
-
+<div class="principal">
 <img src="../IMG/thanos.png" id="personagem">
 <body class="background1">
 	<form action="salvarAdmin" method="post" class="formCadastro">
@@ -106,12 +71,53 @@
 			</div>
 		</fieldset>
 	</form>
+	</div>
 
 	<br>
 	<div th:replace="fragments/msg"></div>
 </body>
 
-<footer th:replace="fragments/default :: rodape"></footer>
+<nav class="nav">
+
+			<div class="home">
+				<a href="#">HOME</a>
+			</div>
+
+			<div class="lista">
+				<a th:href="@{/listarAdmin/1}" onclick="uncheck()">LISTA</a>
+			</div>
+
+			<div class="cliente">
+				<a href="#">CLIENTE</a>
+			</div>
+
+			<div class="sair">
+				<a href="#">SAIR</a>
+			</div>
+		
+		</nav>
+
+<header>
+	<div class="container">
+		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
+			onselect=""> <label for="checkbox4">
+			<div class="hamburger hamburger4">
+				<span class="bar bar1"></span> <span class="bar bar2"></span> <span
+					class="bar bar3"></span> <span class="bar bar4"></span> <span
+					class="bar bar5"></span>
+			</div>
+		</label>
+	</div>
+	<h1>Formulario de Administrador</h1>
+
+	<div class="switch-div">
+		<h6>Cadastro / Login</h6>
+		<label class="switch"> 
+			<input type="checkbox" id="switch-id">
+			<span class="slider round"></span>
+		</label>
+	</div>
+</header>
 
 <div id="circle" class="Off">
 </div>

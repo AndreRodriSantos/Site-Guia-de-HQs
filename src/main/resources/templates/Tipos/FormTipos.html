@@ -6,9 +6,7 @@
 <link rel="stylesheet" href="../CSS/FormTiposStyle.css">
 </head>
 
-<header>
-	<div class="container">
-		<nav class="nav">
+<nav class="nav">
 			<div class="home">
 				<a href="#">HOME</a>
 			</div>
@@ -25,6 +23,9 @@
 				<a href="#">SAIR</a>
 			</div>
 		</nav>
+
+<header>
+	<div class="container">
 		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
 			onselect=""> <label for="checkbox4">
 			<div class="hamburger hamburger4">
@@ -54,7 +55,7 @@
 			<div class="wrapper">
 				<label>Descricao</label>
 				<textarea rows="4" cols="30" name="descricao"
-					th:text="${tipo?.descricao}" required="required"></textarea>
+					th:text="${tipo?.descricao}" required="required" style="resize:none"></textarea>
 				<span class="underline"></span>
 			</div>
 

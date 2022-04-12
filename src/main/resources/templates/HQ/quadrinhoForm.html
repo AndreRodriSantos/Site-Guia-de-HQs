@@ -54,28 +54,16 @@
 			<div class="wrapper">
 				<label>Descricao</label>
 				<textarea rows="4" cols="30" name="descricao"
-					th:text="${tipo?.descricao}" required="required"></textarea>
+					th:text="${tipo?.descricao}" required="required" style="resize:none"></textarea>
 				<span class="underline"></span>
 			</div>
 
 			<br>
 
 			<div class="wrapper">
-				<label>Tipo / Genero</label> <select class="browser-default"
-					name="tipo">
-					<option th:each="t: ${tipos}" th:value="${t.id}" th:text="${t.nome}"></option>
-				</select> <span class="underline"></span>
-			</div>
-
-			<div class="wrapper">
 				<label>Classificação Indicativa</label> <input type="text"
 					name="classIndicativa" th:value="${tipo?.palavraChave}"
 					autocomplete="off"> <span class="underline"></span>
-			</div>
-
-			<div class="wrapper">
-				<label>Foto</label> <input type="file" name="fileFotos" multiple="multiple" accept="image/*"> 
-				<span class="underline"></span>
 			</div>
 
 			<div class="wrapper">
@@ -94,6 +82,17 @@
 				<label>Quantidade de Paginas</label> <input type="number"
 					name="qtdPaginas" th:value="${tipo?.palavraChave}"
 					autocomplete="off"> <span class="underline"></span>
+			</div>
+			
+			<div class="wrapper">
+				<label>Tipo / Genero</label> <select class="browser-default"
+					name="tipo">
+					<option th:each="t: ${tipos}" th:value="${t.id}" th:text="${t.nome}"></option>
+				</select> <span class="underline"></span>
+			</div>
+			
+			<div class="wrapper">
+				<label>Foto</label> <input type="file" name="fileFotos" multiple="multiple" class="ft" accept="image/*">
 			</div>
 
 			<br>
