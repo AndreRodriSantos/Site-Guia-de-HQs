@@ -1,10 +1,9 @@
 var imageDataArray = [];
-var canvasCount = 30;
+var canvasCount = 25;
 const admins = document.querySelectorAll('.admin')
 const botoes = document.querySelectorAll(".excluir-btn")
 
 for (let ad = 0; ad < admins.length; ad++) {
-
 	const tdExcluir = admins[ad].lastElementChild
 	const botao = tdExcluir.lastElementChild
 	const img = tdExcluir.getElementsByTagName("img")

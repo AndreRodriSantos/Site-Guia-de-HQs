@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="lista">
-				<a th:href="@{/listarTipos/1}" onclick="uncheck()">LISTA</a>
+				<a th:href="@{/listarQuadrinhos/1}" onclick="uncheck()">LISTA</a>
 			</div>
 
 			<div class="cliente">
@@ -42,10 +42,10 @@
 	<form action="salvarQuadrinho" method="post" id="formQuadrinho" enctype="multipart/form-data" accept-charset="utf-8">
 		<fieldset form="formQuadrinho">
 			<legend>Quadrinhos</legend>
-			<input type="hidden" name="id" th:value="${tipo?.id}">
+			<input type="hidden" name="id" th:value="${hq?.id}">
 			<div class="wrapper">
 				<label>Nome</label> <input type="text" name="nome"
-					required="required" th:value="${tipo?.nome}" autocomplete="off">
+					required="required" th:value="${hq?.nome}" autocomplete="off">
 				<span class="underline"></span>
 			</div>
 
@@ -54,7 +54,7 @@
 			<div class="wrapper">
 				<label>Descricao</label>
 				<textarea rows="4" cols="30" name="descricao"
-					th:text="${tipo?.descricao}" required="required" style="resize:none"></textarea>
+					th:text="${hq?.descricao}" required="required" style="resize:none"></textarea>
 				<span class="underline"></span>
 			</div>
 
@@ -62,25 +62,25 @@
 
 			<div class="wrapper">
 				<label>Classificação Indicativa</label> <input type="text"
-					name="classIndicativa" th:value="${tipo?.palavraChave}"
+					name="classIndicativa" th:value="${hq?.classIndicativa}"
 					autocomplete="off"> <span class="underline"></span>
 			</div>
 
 			<div class="wrapper">
 				<label>Editora</label> <input type="text" name="editora"
-					th:value="${tipo?.palavraChave}" autocomplete="off"> <span
+					th:value="${hq?.editora}" autocomplete="off"> <span
 					class="underline"></span>
 			</div>
 
 			<div class="wrapper">
 				<label>Autor</label> <input type="text" name="autor"
-					th:value="${tipo?.palavraChave}" autocomplete="off"> <span
+					th:value="${hq?.autor}" autocomplete="off"> <span
 					class="underline"></span>
 			</div>
 
 			<div class="wrapper">
 				<label>Quantidade de Paginas</label> <input type="number"
-					name="qtdPaginas" th:value="${tipo?.palavraChave}"
+					name="qtdPaginas" th:value="${hq?.qtdPaginas}"
 					autocomplete="off"> <span class="underline"></span>
 			</div>
 			
