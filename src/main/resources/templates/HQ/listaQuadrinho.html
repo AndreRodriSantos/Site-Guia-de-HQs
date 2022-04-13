@@ -69,11 +69,11 @@
 				<th>Alterar</th>
 				<th>Excluir</th>
 			</tr>
-			<tr th:each="hq :${hqs}">
+			<tr th:each="hq :${hqs}" >
 				<td th:text="${hq.id}" />
 				<td th:text="${hq.nome}" />
 				<td th:text="${hq.descricao}" />
-				<td th:text="${hq.tipo.nome}" />
+				<td th:text="${hq.tipo?.nome}"/>
 				<td th:text="${hq.classIndicativa}" />
 				<td th:text="${hq.editora}" />
 				<td th:text="${hq.autor}" />

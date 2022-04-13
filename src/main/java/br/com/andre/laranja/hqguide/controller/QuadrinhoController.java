@@ -1,5 +1,6 @@
 package br.com.andre.laranja.hqguide.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,29 +24,53 @@ import br.com.andre.laranja.hqguide.model.Quadrinho;
 import br.com.andre.laranja.hqguide.model.TipoGibi;
 import br.com.andre.laranja.hqguide.repository.QuadrinhoRepository;
 import br.com.andre.laranja.hqguide.repository.TipoRepository;
+import br.com.andre.laranja.hqguide.util.FirebaseUtil;
 
 @Controller
 public class QuadrinhoController {
 	@Autowired
 	private TipoRepository repTipo;
-	
+
 	@Autowired
 	private QuadrinhoRepository repHQ;
-	
+
+	@Autowired
+	private FirebaseUtil firebaseUtil;
+
 	@RequestMapping("formQuadrinho")
-	public String form (Model model) {
+	public String form(Model model) {
 		model.addAttribute("tipos", repTipo.findAllByOrderByNomeAsc());
 		return "HQ/quadrinhoForm";
 	}
+
 	@RequestMapping(value = "salvarQuadrinho")
-	public String salvarHQ(@Valid Quadrinho quadrinho, BindingResult result, RedirectAttributes attr, @RequestParam("fileFotos") MultipartFile[] fileFotos) {
+	public String salvarHQ(@Valid Quadrinho quadrinho, BindingResult result, RedirectAttributes attr,
+			@RequestParam("fileFotos") MultipartFile[] fileFotos) {
+		// String para a URL das fotos
+		String fotos = "";
+
+		// percorrer cada arquivo no formulário
+		for (MultipartFile arquivo : fileFotos) {
+			// verificar se o arquivo está vazio
+			if (arquivo.getOriginalFilename().isEmpty()) {
+				// vai para o próximo arquivo
+				continue;
+			}
+			// faz o upload para a nuvem e obtem a url
+				try {
+					fotos += firebaseUtil.uploadFile(arquivo) + ";";
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+		quadrinho.setFotos(fotos);
+		repHQ.save(quadrinho);
 		if (result.hasErrors()) {
 			attr.addFlashAttribute("mensagemErro", "Verifique os Campos...");
 			return "redirect:formQuadrinho";
 		}
 		try {
 			System.out.println(fileFotos.length);
-			repHQ.save(quadrinho);
 			attr.addFlashAttribute("mensagemSucesso", "Novo Quadrinho cadastrado com sucesso. ID:" + quadrinho.getId());
 		} catch (Exception e) {
 			attr.addFlashAttribute("mensagemErro", "Houve um erro ao cadastrar esse Quadrinho:" + e.getMessage());
@@ -66,6 +91,7 @@ public class QuadrinhoController {
 		for (int i = 0; i < totalpages; i++) {
 			pageNumbers.add(i + 1);
 		}
+		
 		// adiciona as variaveis no Model
 		model.addAttribute("hqs", pagina.getContent());
 		model.addAttribute("paginaAtual", page);
@@ -73,7 +99,7 @@ public class QuadrinhoController {
 		model.addAttribute("numPaginas", pageNumbers);
 		return "HQ/listaQuadrinho";
 	}
-
+	
 	@RequestMapping("alterarQuadrinho")
 	public String alterarTipo(Model model, Long id) {
 		Quadrinho hq = repHQ.findById(id).get();
@@ -85,5 +111,20 @@ public class QuadrinhoController {
 	public String excluirQuadrinho(Long id) {
 		repHQ.deleteById(id);
 		return "redirect:listarQuadrinhos/1";
+	}
+	@RequestMapping("excluirFoto")
+	public String excluirFoto(Long idQuadrinho, int numFoto, Model model) {
+		//busca o restaurante no banco de dados
+		Quadrinho hq = repHQ.findById(idQuadrinho).get();
+		//pegar a String da foto a ser excluida
+		String fotoUrl = hq.verFotos()[numFoto];
+		//excluir do firebase
+		firebaseUtil.deletar(fotoUrl);
+		hq.setFotos(hq.getFotos().replace(fotoUrl + ";", ""));
+		//salva no BD o objeto
+		repHQ.save(hq);
+		model.addAttribute("quadrinho", hq);
+		return "forward:formQuadrinho";
+		
 	}
 }

@@ -26,4 +26,8 @@ public class Quadrinho {
 	private String editora;
 	private String autor;
 	private int qtdPaginas;
+	
+	public String[] verFotos() {
+		return this.fotos.split(";");
+	}
 }

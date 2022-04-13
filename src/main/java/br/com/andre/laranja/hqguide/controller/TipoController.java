@@ -73,7 +73,7 @@ public class TipoController {
 	@RequestMapping("alterarTipo")
 	public String alterarTipo(Model model, Long id) {
 		TipoGibi tipo = repository.findById(id).get();
-		model.addAttribute("tipo", tipo);
+		model.addAttribute("tipos", tipo);
 		return "forward:formCategorias";
 	}
 
