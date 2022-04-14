@@ -22,7 +22,7 @@
 			</div>
 
 			<div class="sair">
-				<a href="#">SAIR</a>
+				<a th:href="@{/logout}">SAIR</a>
 			</div>
 		</nav>
 		<input type="checkbox" id="checkbox4" class="checkbox4 visuallyHidden"
@@ -43,6 +43,7 @@
 		<fieldset form="formQuadrinho">
 			<legend>Quadrinhos</legend>
 			<input type="hidden" name="id" th:value="${hq?.id}">
+			<input type="hidden" name="fotos" th:value="${quadrinho?.fotos}">
 			<div class="wrapper">
 				<label>Nome</label> <input type="text" name="nome"
 					required="required" th:value="${hq?.nome}" autocomplete="off">

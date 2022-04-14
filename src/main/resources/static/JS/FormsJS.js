@@ -26,8 +26,8 @@ for (var i = 0; i < btnRed.length; i++) {
 
 const background = document.querySelector("body")
 const personagem = document.querySelector(".personagem")
-const formCadastro = document.querySelector(".formCadastro")
-const formLogin = document.querySelector(".formLoginOff")
+const formCadastro = document.querySelector(".formCadastroOff")
+const formLogin = document.querySelector(".formLogin")
 const circle = document.querySelector("#circle")
 
 let switchBtn = document.getElementById("switch-id")
@@ -37,10 +37,10 @@ switchBtn.addEventListener('click', () => {
 		circle.classList.replace("Off", "On")
 		document.getElementById("switch-id").disabled = true
 		setTimeout(function() {
-			document.getElementById("personagem").src = "../IMG/darkside.png"
-			background.classList.replace("background1", "background2")
-			formCadastro.classList.replace("formCadastro", "formCadastroOff")
-			formLogin.classList.replace("formLoginOff", "formLogin")
+			document.getElementById("personagem").src = "../IMG/thanos.png"
+			background.classList.replace("background2", "background1")
+			formCadastro.classList.replace("formCadastroOff", "formCadastro")
+			formLogin.classList.replace("formLogin", "formLoginOff")
 		}, 2000);
 		setTimeout(function() {
 			document.getElementById("switch-id").disabled = false
@@ -49,10 +49,10 @@ switchBtn.addEventListener('click', () => {
 		circle.classList.replace("On", "Off")
 		document.getElementById("switch-id").disabled = true
 		setTimeout(function() {
-			document.getElementById("personagem").src = "../IMG/thanos.png"
-			background.classList.replace("background2", "background1")
-			formCadastro.classList.replace("formCadastroOff", "formCadastro")
-			formLogin.classList.replace("formLogin", "formLoginOff")
+			document.getElementById("personagem").src = "../IMG/darkside.png"
+			background.classList.replace("background1", "background2")
+			formCadastro.classList.replace("formCadastro", "formCadastroOff")
+			formLogin.classList.replace("formLoginOff", "formLogin")
 		}, 2000);
 		setTimeout(function() {
 			document.getElementById("switch-id").disabled = false

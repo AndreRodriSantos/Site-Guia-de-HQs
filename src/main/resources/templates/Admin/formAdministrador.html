@@ -10,9 +10,9 @@
 <footer th:replace="fragments/default :: rodape"></footer>
 
 <div class="principal">
-<img src="../IMG/thanos.png" id="personagem">
-<body class="background1">
-	<form action="salvarAdmin" method="post" class="formCadastro">
+<img src="../IMG/darkside.png" id="personagem">
+<body class="background2">
+	<form action="salvarAdmin" method="post" class="formCadastroOff">
 		<fieldset form="formAdmin">
 			<legend>Cadastro</legend>
 			<input type="hidden" name="id" th:value="${admin?.id}">
@@ -45,12 +45,12 @@
 		</fieldset>
 	</form>
 	
-	<form  class="formLoginOff">
+	<form action="login" class="formLogin" method="post">
 		<fieldset form="formLogin">
 			<legend>Login</legend>
-			<input type="hidden" name="id" th:value="${admin?.id}">
+			<input type="hidden" name="id">
 			<div class="wrapper">
-				<label>Nome</label> <input type="text" name="nome"
+				<label>Email</label> <input type="text" name="email"
 					required="required" autocomplete="off">
 				<span class="underline-red"></span>
 			</div>
@@ -83,7 +83,7 @@
 				<a href="#">HOME</a>
 			</div>
 
-			<div class="lista">
+			<div class="lista" th:if="${session.usuarioLogado !=null}">
 				<a th:href="@{/listarAdmin/1}" onclick="uncheck()">LISTA</a>
 			</div>
 
@@ -92,7 +92,7 @@
 			</div>
 
 			<div class="sair">
-				<a href="#">SAIR</a>
+				<a th:href="@{/logout}">SAIR</a>
 			</div>
 		
 		</nav>
@@ -109,13 +109,15 @@
 		</label>
 	</div>
 	<h1>Formulario de Administrador</h1>
-
-	<div class="switch-div">
-		<h6>Cadastro / Login</h6>
+	
+	<div>
+	<div class="switch-div" th:if="${session.usuarioLogado !=null}">
+		<h6>Login / Cadastro</h6>
 		<label class="switch"> 
-			<input type="checkbox" id="switch-id">
+			<input type="checkbox" id="switch-id" >
 			<span class="slider round"></span>
 		</label>
+	</div>
 	</div>
 </header>
 

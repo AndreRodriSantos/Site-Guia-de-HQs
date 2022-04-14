@@ -47,7 +47,7 @@ public class QuadrinhoController {
 	public String salvarHQ(@Valid Quadrinho quadrinho, BindingResult result, RedirectAttributes attr,
 			@RequestParam("fileFotos") MultipartFile[] fileFotos) {
 		// String para a URL das fotos
-		String fotos = "";
+		String fotos = quadrinho.getFotos();
 
 		// percorrer cada arquivo no formulário
 		for (MultipartFile arquivo : fileFotos) {
@@ -108,8 +108,14 @@ public class QuadrinhoController {
 	}
 
 	@RequestMapping("excluirQuadrinho")
-	public String excluirQuadrinho(Long id) {
-		repHQ.deleteById(id);
+		public String excluirQuadrinho(Long id) {
+			Quadrinho hq = repHQ.findById(id).get();
+			if(hq.getFotos().length() > 0) {
+				for (String foto : hq.verFotos()) {
+					firebaseUtil.deletar(foto);
+				}
+			}
+			repHQ.delete(hq);
 		return "redirect:listarQuadrinhos/1";
 	}
 	@RequestMapping("excluirFoto")

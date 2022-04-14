@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.andre.laranja.hqguide.annotation.Publico;
 import br.com.andre.laranja.hqguide.model.Administrador;
 import br.com.andre.laranja.hqguide.repository.AdminRepository;
 import br.com.andre.laranja.hqguide.util.HashUtil;
@@ -28,7 +30,8 @@ public class AdministradorController {
 
 	@Autowired
 	private AdminRepository repository;
-
+	
+	@Publico
 	@RequestMapping("formAdmin")
 	public String form_adm(Model model) {
 		return "Admin/formAdministrador";
@@ -96,6 +99,28 @@ public class AdministradorController {
 		model.addAttribute("admin", admin);
 		return "forward:formAdmin";
 	}
+	
+	@Publico
+	@RequestMapping("login")
+	public String login(Administrador admLogin, RedirectAttributes attr, HttpSession session) {
+		//buscar o administrador no Bd, atraves de email e da senha
+		Administrador admin = repository.findByEmailAndSenha(admLogin.getEmail(), admLogin.getSenha());
+		//verifica se existe o admin
+		if(admin == null){
+			//avisa ao usuario 
+			attr.addFlashAttribute("mensagemErro", "Email e/ou senha Invalido(s)");
+			return "redirect:formAdmin";
+		}else {
+			//se não for nulo, salva na sessão e acessa o sistema
+			session.setAttribute("usuarioLogado", admin);
+			return "redirect:listarQuadrinhos/1";
+		}
+	}
+	@RequestMapping("logout")
+	public String logout (HttpSession session) {
+		session.invalidate();
+		return "redirect:formAdmin";
+	}
 
 	@RequestMapping("excluirAdmin")
 	public String excluirAdmin(Long id){
@@ -108,4 +133,6 @@ public class AdministradorController {
 			return "redirect:listarAdmin/1";
 		}
 	}
+	
+	
 }

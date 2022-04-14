@@ -7,5 +7,5 @@ import br.com.andre.laranja.hqguide.model.Administrador;
 
 @Repository
 public interface AdminRepository extends PagingAndSortingRepository<Administrador, Long>{
-
+	public Administrador findByEmailAndSenha(String email, String senha);
 }
