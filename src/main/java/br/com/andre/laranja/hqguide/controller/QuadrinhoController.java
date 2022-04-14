@@ -123,7 +123,7 @@ public class QuadrinhoController {
 		hq.setFotos(hq.getFotos().replace(fotoUrl + ";", ""));
 		//salva no BD o objeto
 		repHQ.save(hq);
-		model.addAttribute("quadrinho", hq);
+		model.addAttribute("hq", hq);
 		return "forward:formQuadrinho";
 		
 	}

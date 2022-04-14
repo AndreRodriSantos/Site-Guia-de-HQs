@@ -87,7 +87,7 @@
 			<div class="wrapper">
 				<label>Tipo / Genero</label> <select class="browser-default"
 					name="tipo.id">
-					<option th:each="t: ${tipos}" th:text="${t.nome}" th:selected="${t.id == hq?.tipo?.id}"></option>
+					<option th:each="t: ${tipos}" th:text="${t.nome}" th:value="${t.id}" th:selected="${t.id == hq?.tipo?.id}"></option>
 				</select> <span class="underline"></span>
 			</div>
 			
@@ -95,12 +95,15 @@
 				<label>Foto</label> <input type="file" name="fileFotos" multiple="multiple" class="ft" accept="image/*">
 			</div>
 			
-			<div th:if="${hq?.fotos?.length > 0}">
+			<div th:if="${hq?.fotos?.length > 0}" class="lista-fotos">
 			<h6 style="color:white">Fotos Cadastradas</h6>
 			<ul style="display:flex">
-				<li th:each="foto : ${hq?.verFotos()}">
-				<a th:href="${foto}" target="blank"><img th:src="${foto}" height="50px"></a>
-				<a th:href="@{/excluirFoto(idQuadrinho=${quadrinho.id}, numFoto = ${i.index})}">Excluir</a>
+				
+				<li th:each="foto, i : ${hq?.verFotos()}">
+				<div>
+				<a th:href="${foto}" target="blank"><img th:src="${foto}" height="50px" ></a>
+				<a th:href="@{/excluirFoto(idQuadrinho=${hq.id}, numFoto=${i.index})}"><img src="../IMG/trash-icon.png" height="20px"></a>
+				</div>
 				</li>
 			</ul>
 			</div>

@@ -43,6 +43,7 @@ input[type=file]{
     font-size: 15px;
     position:absolute;
     bottom:118px;
+    top:513px;
  	left:345px;
     height:30px;
    	width:30px;
@@ -425,4 +426,32 @@ option{
 }
 textarea {
 	max-width: 90%;
+}
+ul{
+	list-style: none;
+	width: 100%;
+}
+ul div{
+	margin-left: 20px;
+}
+.lista-fotos{
+	overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+ background: dodgerblue;
+ border-radius: 10px;
+ margin: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #005b88;
 }

@@ -30,7 +30,7 @@ public class FirebaseUtil {
 	private final String SUFFIX = "?alt=media";
 	// constante para a URL
 	private final String DOWNLOAD_URL = PREFIX + "%s" + SUFFIX;
-
+	
 	public FirebaseUtil() {
 		// buscar as credenciais (arquivo JSON)
 		Resource resource = new ClassPathResource("chaveFireBase.json");
