@@ -131,6 +131,5 @@ public class QuadrinhoController {
 		repHQ.save(hq);
 		model.addAttribute("hq", hq);
 		return "forward:formQuadrinho";
-		
 	}
 }

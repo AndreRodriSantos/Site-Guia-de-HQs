@@ -28,6 +28,10 @@ public class AppInterceptor implements HandlerInterceptor{
 			}
 			//fazer o cating para handlerMethod
 			HandlerMethod metodoChamado = (HandlerMethod) handler;
+			if(uri.startsWith("/api")) {
+				
+				return true;
+			}else {
 			//se o method for público libera
 			if(metodoChamado.getMethodAnnotation(Publico.class) != null) {
 				return true;
@@ -39,7 +43,7 @@ public class AppInterceptor implements HandlerInterceptor{
 				response.sendRedirect("/");
 				return false;
 			}
-		}
+		}}
 		return true;
 	}
 }
