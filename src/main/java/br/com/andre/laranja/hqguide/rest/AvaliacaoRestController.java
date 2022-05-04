@@ -21,21 +21,21 @@ import br.com.andre.laranja.hqguide.repository.AvaliacaoRepositoy;
 @RestController
 @RequestMapping("/api/avaliacao")
 public class AvaliacaoRestController {
-	
+
 	@Autowired
 	private AvaliacaoRepositoy repository;
-	
+
 	@Privado
-	@RequestMapping(value="", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Avaliacao> criarAvaliacao(@RequestBody Avaliacao avaliacao){
+	@RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Avaliacao> criarAvaliacao(@RequestBody Avaliacao avaliacao) {
 		repository.save(avaliacao);
-		return ResponseEntity.created(URI.create("/avaliacao/"+ avaliacao.getId())).body(avaliacao);
+		return ResponseEntity.created(URI.create("/avaliacao/" + avaliacao.getId())).body(avaliacao);
 	}
-	
+
 	@Publico
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Avaliacao> findAvaliacao(@PathVariable ("id") Long id){
-		//busca  quadrinho
+	public ResponseEntity<Avaliacao> findAvaliacao(@PathVariable("id") Long id) {
+		// busca quadrinho
 		Optional<Avaliacao> avaliacao = repository.findById(id);
 		if (avaliacao.isPresent()) {
 			return ResponseEntity.ok(avaliacao.get());
@@ -43,11 +43,11 @@ public class AvaliacaoRestController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	@Publico
 	@RequestMapping(value = "/quadrinho/{idQuadrinho}", method = RequestMethod.GET)
 	public List<Avaliacao> getQuadrinhoById(@PathVariable("idQuadrinho") Long idQuadrinho) {
 		return repository.findByQuadrinhoId(idQuadrinho);
 	}
-	
+
 }

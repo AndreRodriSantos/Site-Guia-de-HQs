@@ -1,13 +1,24 @@
 package br.com.andre.laranja.hqguide.interceptor;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
+
+import br.com.andre.laranja.hqguide.annotation.Privado;
 import br.com.andre.laranja.hqguide.annotation.Publico;
+import br.com.andre.laranja.hqguide.rest.UsuarioRestController;
 
 @Component
 public class AppInterceptor implements HandlerInterceptor {
@@ -30,7 +41,26 @@ public class AppInterceptor implements HandlerInterceptor {
 			// fazer o cating para handlerMethod
 			HandlerMethod metodoChamado = (HandlerMethod) handler;
 			if (uri.startsWith("/api")) {
-
+				String token = null;
+				if (metodoChamado.getMethodAnnotation(Privado.class) != null) {
+					try {
+						// obtem o token da request
+						token = request.getHeader("Authorization");
+						Algorithm algoritimo = Algorithm.HMAC256(UsuarioRestController.SECRET);
+						JWTVerifier verifier = JWT.require(algoritimo).withIssuer(UsuarioRestController.EMISSOR)
+								.build();
+						DecodedJWT jwt = verifier.verify(token);
+						//extrair os dados do payload
+						Map<String, Claim> payloadMap = jwt.getClaims();
+					} catch (Exception e) {
+						if(token == null) {
+							response.sendError(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
+						}else {
+							response.sendError(HttpStatus.FORBIDDEN.value(), e.getMessage());
+						}
+						return false;
+					}
+				}
 				return true;
 			} else {
 				// se o method for público libera
